@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Grid, Card, CardContent, Typography, withStyles, TextField, Divider, Button, AppBar, Toolbar, Drawer } from '@material-ui/core'
 import SendIcon from '@material-ui/icons/Send'
 import './App.css'
-
 const styles = theme => ({
     root: {
         flexGrow: 1
@@ -53,7 +52,8 @@ const styles = theme => ({
         borderRadius: 6,
         backgroundColor: theme.palette.type === 'dark' ? 'rgba(0,0,0,0.5)' : '#f6f6f6',
         padding: 6,
-        margin: 2
+        margin: 2,
+
     },
     toolbar: theme.mixins.toolbar
 })
@@ -162,7 +162,8 @@ class App extends Component {
                                 </Grid>
                             )}
                             <Grid item style={{ flexShrink: 1 }}>
-                                <Typography variant="body1" className={myMessage ? classes.myMessage : classes.notMyMessage}>
+
+                                <Typography variant="body1" className={myMessage ? classes.myMessage : classes.notMyMessage} >
                                     {message.text}
                                 </Typography>
                             </Grid>
@@ -187,9 +188,10 @@ class App extends Component {
                     <Divider />
                 </Grid>
                 {this.state.participants.map((user, index) => {
+                    const myself = user === this.state.author
                     return (
                         <Grid key={index} item xs={12}>
-                            <Typography align="center" variant="caption" style={{ fontWeight: 'bold' }}>
+                            <Typography align="center" variant="caption" style={{ fontWeight: 'bold'}}>
                                 {user}
                             </Typography>
                         </Grid>
@@ -206,7 +208,7 @@ class App extends Component {
                 <AppBar position="fixed" className={classes.appBar}>
                     <Toolbar>
                         <Typography color="inherit" className={classes.grow} variant="h6">
-                            Simple Chat
+                            My Chat Room
                         </Typography>
                     </Toolbar>
                 </AppBar>
